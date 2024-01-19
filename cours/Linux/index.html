@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./asset/img/linux.png">
+    <title>Linux - human booster</title>
+
+    <link rel="stylesheet" href="./asset/style.css">
+</head>
+
+<body>
+
+    <header id="site-header" class="visible">
+        <ul>
+            <li>
+                <p>
+                    <a href="#def">Definition</a>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="#virtu">Virtualisation</a>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="#termshell">Terminal vs Shell</a>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="#sys">Systeme de fichier</a>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="#drper">Droits et permission</a>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="#cmd">Commande</a>
+                </p>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+
+        <h1>Linux</h1>
+
+        <h2 id="def">Definition</h2>
+
+        <p>
+            Linux est un code opensource, un noyau, il a pour but d'etre utiliser comme un programme utlisiable par la
+            carte
+            mère. Il va traduire du code en instruction informatique. <br>
+            Linux est composer de distributions, ce sont des système d'exploitation qui utilise le noyau Linux (Ubuntu,
+            Debian, ...). Une distribution peut etre basé sur une autre distribution, on les appel des "fork" (
+            "fourchette", des copies).
+        </p>
+
+        <h2 id="virtu">Virtualisation</h2>
+
+        <p>
+            La virtualisation est de transferer un os sur une machine (l'emulation est de faire du code pour transferer
+            une
+            machine a travers du code). Ceci en sort en deux grand concept :
+
+        <ul>
+            <li>
+                <p>
+                    Paravirtualisation: VM pensé vitualisation, Kernel modifier, Drivers opti. C'est une virtualisation
+                    qui
+                    utlise un système pour exister.
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    Virtualisation hybride: Tous les OS compatible, instruction CPU, Meilleur perf. C'est une
+                    virtualisation
+                    qui existe a coter des autre virtualisation
+                </p>
+            </li>
+        </ul>
+
+        </p>
+
+        <h2 id="termshell">Terminal vs Shell</h2>
+
+        <p>
+        <ul>
+            <li>
+                <p>
+                    Terminal: application qui permet d'afficher lignes des commandes (vs code)
+                </p>
+            </li>
+            <li>
+                <p>
+                    Shell: langage qui permet de donner des instruction a travers de ligne de commandes (bash, batch,
+                    powershell). Ils sont souvent pensé pour un seul systeme d'exploitation
+                </p>
+            </li>
+        </ul>
+
+        un Prompt: user@machine:~path <br>
+
+        informations données avant la commande <br>
+
+        user: lutilisateur auquel vous êtes connecté a l'instant <br>
+        machine: Le nom de la machine auquel on est connecter a l'instant. tips: il peut s'agir d'une ip <br>
+        path: il s'agit de l'endroit ou on est situé dans les fichier de la machine <br>
+
+        il est interessant de comprendre un prompt car les shell ne sont pas toujours les même sur un serveur (voir
+        batch,
+        powershell,...).
+
+        </p>
+
+        <h2 id="drper">Droits et permission</h2>
+
+        <p>
+            Linux est composer de plusieur utilisateur, chaque processus tournent et appartient a 1 seul groupe et 1
+            utilisateur. il existe 3 type d'ulisateur :
+        <ul>
+            <li>
+                <p>
+                    untilisateur reel: a un nom d'utilisateur, a un UID (indentifiant systeme), d'autre propriété
+                    personnelle, des permissions.
+                </p>
+            </li>
+            <li>
+                <p>
+                    utilisateur systeme: uniquement pour un processus, plage d'UID (géner par le systeme), ne peut pas
+                    etre
+                    utiliser par l'humain, des permissions. (revoir les notions d'utilisateur)
+                </p>
+            </li>
+            <li>
+                <p>
+                    root: est l'administrateur: est un utilisateur reel, il a absoluement tout les droits sula machine,
+                    a un
+                    UID est egale à 0, linux ne fourni pas toujours le mot de passe, il est très dangereux de se
+                    connecter
+                    au root, est seulement recommander pour la création de l'utilisateur et de groupe.
+                </p>
+            </li>
+        </ul>
+
+        groupe: il a un nom unique, a un GID (indentifiant systeme), des utilisateur reels ou non, des permissions <br>
+
+        chaque processus doit avoir un seul et meme groupe. <br>
+
+        tout utilisateur, lors de sa création, lui créer un groupe par defaut avec comme GID l'ID de l'utilisateur
+        </p>
+
+        <h2 id="sys">Systeme de fichier</h2>
+
+        <p>
+            chaque dossier dans un machine a une URL (ex: C:/Document/note/note.txt) dans l'exemple on est sur le
+            fichier
+            note.txt qui est dans document note qui est dans le document Document dans le disque C. ceci est afficher
+            dans
+            l'explorateur de fichier windows. <br>
+            Dans linux l'exploration se fait souvent sans explorateur de fichier et il faut passer dans le terminal (via
+            le
+            shell bash)
+        </p>
+
+        <h2 id="cmd">Commande</h2>
+
+        <p>
+            l'argument -h sur une commande permet d'avoir plus d'information sur la commande demandé
+        </p>
+
+        <h3>Commande de base</h3>
+
+        <p>
+            Une commande est un texte que l'on écrit dans le terminal afin d'executé une action. Une application est
+            obligatoirement des commandes <br>
+            Pour lancer une application il faut taper dans le terminal le nom de l'application <span
+                class="terminal">firefox <span class="colorGreen">https://google.fr</span></span> . <br>
+            Pour exectuer en tant qu'administrateur il faut utiliser la commande sudo (voir a quoi correspond le sudo)
+            qui
+            est native a Ubuntu. <br>
+
+        <ul>
+            <li>
+                <p>
+                    <span class="terminal">apt</span>
+                    permet d'installer des applications via un shell <br>
+                    Apt (Advenced packaging tool) est une application native de linux qui foncionne par paquet (donc un
+                    gestionnaire de paquet) une sorte de store. La difference avec un store est qu'il n'y a pas
+                    d'entreprise derriere. <br>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">ls <span class="colorBlue">[option]</span> </span>
+                    permet d'afficher le contenu du dossier ou on se situe <br>
+                <ul>
+                    <li>
+                        <span class="terminal">-l</span> affiche plus de données
+                    </li>
+                    <li>
+                        <span class="terminal">-lh</span> affiche en octet
+                    </li>
+                    <li>
+                        <span class="terminal">*.zip</span> affiche les fichiers contenant .zip
+                    </li>
+                </ul>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">cd <span class="colorBlue">[direction]</span> </span>
+                    permet de se deplacer dans les dossier
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">pwd</span>
+                    permet d'afficher l'url ou l'on se situe
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">cp <span class="colorBlue">[option]</span> <span
+                            class="colorYellow">[source]</span> <span class="colorGreen">[destination]</span></span>
+                    permet de copier une sources
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">mv <span class="colorBlue">[option]</span> <span
+                            class="colorYellow">[source]</span> <span class="colorGreen">[destination]</span></span>
+                    permet de renomer un fichier et le deplacer
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">mkdir <span class="colorYellow">[nom]</span> </span>
+                    permet de créer un dossier
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">touch <span class="colorYellow">[nom]</span> </span>
+                    permet de créer un fichier
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">rm <span class="colorBlue">[option]</span> <span
+                            class="colorYellow">[nom]</span> </span>
+                    permet de supprimer <br>
+                    <span class="terminal">-r</span> (recursive) permet de supprimer un dossier et son contenu
+                </p>
+            </li>
+        </ul>
+
+        </p>
+
+        <h3>commande droit et permission</h3>
+
+        <ul>
+            <li>
+                <p>
+                    <span class="terminal">su <span class="colorYellow">[user]</span> </span>
+                    permet de changer d'utilisateur
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">whoami </span>
+                    permet d'afficher l'utilisateur
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">groups <span class="colorYellow">[user]</span> </span>
+                    permet d'afficher les groupes de l'utilisateur
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">adduser <span class="colorYellow">[user]</span> </span>
+                    permet de créer un utilisateur (n'est pas native a linux est originaire de debian), demandera
+                    ensuite un mdp et qlq informations perso (optionelle) <br>
+                    Il va créer un un dossier utlisateur dans home <span class="terminal"><span
+                            class="colorBlue">/home</span><span class="colorYellow">/user</span></span> <br>
+                    permet egalement d'assigner un utilisateur a un groupe <span class="terminal">adduser <span
+                            class="colorYellow">[user]</span> <span class="colorGreen">[group]</span> </span>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">deluser <span class="colorYellow">[user]</span> </span>
+                    permet de supprimer un utilisateur <br>
+                    Il ne va pas supprimer les dossier utlisateur dans home <span class="terminal"><span
+                            class="colorBlue">/home</span><span class="colorYellow">/user</span></span> <br>
+                    permet egalement de retirer un utilisateur d'un groupe <span class="terminal">deluser <span
+                            class="colorYellow">[user]</span> <span class="colorGreen">[group]</span> </span>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">passwd</span>
+                    permet de changer le mdp de l'utilisateur en devant renseigner le mdp précedent. <br>
+                    Cependant si l'utilisateur est root, ayant tous les droit il forcera le changement sans renseigner
+                    le mdp précedent, si l'utilisateur est un autre utilisateur il n'aura pas la permission.
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">addgroup <span class="colorYellow">[group]</span> </span>
+                    permet de créer un groupe
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">delgroup <span class="colorYellow">[group]</span> </span>
+                    permet de supprimer un groupe
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">chown <span class="colorYellow">[user]</span>:<span
+                            class="colorBlue">[group]</span> <span class="colorGreen">[fichier/dossier]</span> </span>
+                    permet d'attribuer les droits de propriété sur un fichier/dossier a un utilisateur et/ou a un groupe
+                    <br>
+                    Si l'on veut changer uniquement les droit pour un utilisateur, il faut faire <span class="terminal">chown <span class="colorYellow">[user]</span></span>, mais si l'on veut changer
+                    les droits pour un groupe il faut faire <span class="terminal">chown :<span class="colorBlue">[group]</span></span>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">chmod <span class="colorBlue">[option]</span> <span class="colorYellow">[recherche]</span></span>
+                    permet de gerer les droit d'acces d'un fichier/dossier:
+                    <ul>
+                        <li>
+                            <p>
+                                qui changer?
+                                <span class="terminal colorBlue">u (utilisateur), g (groupe), o (autre)</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                quoi faire?
+                                <span class="terminal colorBlue">+ (ajout), - (retrait)</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                quoi changer?
+                                <span class="terminal colorBlue">r (Read), w (Write), x (eXectue)</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <span class="extra">Rappel: pour voir les droits faire <span class="terminal">ls -l</span> </span>
+                </p>
+            </li>
+        </ul>
+
+        <h3>commande avancé</h3>
+
+        <ul>
+            <li>
+                <p>
+                    <span class="terminal">echo <span class="colorBlue">[arg]</span> <span
+                            class="colorYellow">[string]</span></span>
+                    permet d'afficher une chaine de caractère dans la console <br>
+                    l'argument <span class="terminal colorBlue">-e</span> premet l'affichage des sauts de ligne et pour
+                    en faire un, dans ce qui doit être afficher, il doit contenir <span
+                        class="terminal colorYellow">\n</span>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">date <span class="colorBlue">[arg]</span></span>
+                    permet d'afficher une date dans la console <br>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">man <span class="colorGreen">[commande]</span></span>
+                    permet d'afficher un manuel dans la console de la commande demandé<br>
+                </p>
+            </li>
+            <li>
+                <p>
+                    pour afficher le contenu de fichier text :
+                <ul>
+                    <li>
+                        <p>
+                            <span class="terminal">cat <span class="colorGreen">[file]</span></span>
+                            recommandé pour peu de texte<br>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="terminal">less <span class="colorGreen">[file]</span></span>
+                            recommandé pour bcp de texte<br>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="terminal">more <span class="colorGreen">[file]</span></span>
+                            recommandé pour les 2<br>
+                        </p>
+                    </li>
+                </ul>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">head <span class="colorBlue">[arg]</span> <span class="colorGreen">[file]</span></span>
+                    permet d'afficher le contenu d'un fichier text et prend en argument le nombre de ligne a la quelle
+                    on souhaite commencer (depuis le haut)
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">tail <span class="colorBlue">[arg]</span> <span class="colorGreen">[file]</span></span>
+                    permet d'afficher le contenu d'un fichier text et prend en argument le nombre de ligne a la quelle
+                    on souhaite commencer (depuis le bas)
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">wc <span class="colorBlue">[arg]</span> <span class="colorGreen">[file]</span></span>
+                    calcul des information sur des fichier texte
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">sort <span class="colorBlue">[arg]</span> <span class="colorGreen">[file]</span></span>
+                    trie les lignes d'un fichiers
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span class="terminal">grep <span class="colorBlue">[arg]</span> <span class="colorYellow">[recherche]</span> <span class="colorGreen">[file]</span></span>
+                    affiche le resultat d'une recherche dans un texte
+                </p>
+            </li>
+        </ul>
+
+        <p>
+            editeur de text:
+        <ul>
+            <li>
+                <p>
+                    nano
+                </p>
+            </li>
+            <li>
+                <p>
+                    vi
+                </p>
+            </li>
+            <li>
+                <p>
+                    vim
+                </p>
+            </li>
+        </ul>
+
+        nano [file] ouvrira le file ou il le créera si il n'existe pas
+        </p>
+
+        <h2>combo de commande</h2>
+
+        <p>
+            il est possible d'ecire plusieur commande a la suite.
+            <br>
+            <span class="terminal"> <span class="colorBlue">cmd a</span> | <span class="colorGreen">cmd b</span> </span> : exectuera la <span class="colorBlue">cmd a</span> qui sera donner a <span class="colorGreen">cmd b</span>
+            <br>
+            <span class="terminal"> <span class="colorBlue">cmd a</span> > <span class="colorGreen">cmd b</span> </span> : exectuera la <span class="colorBlue">cmd a</span> et ecrasera le contenu du fichier <span class="colorGreen">cmd b</span>
+            <br>
+            <span class="terminal"> <span class="colorBlue">cmd a</span> >> <span class="colorGreen">cmd b</span> </span> : exectuera la <span class="colorBlue">cmd a</span> et mettra a la suite dans le contenu du fichier <span class="colorGreen">cmd b</span>
+            <br>
+            chaque commande une fois ecxecute sort un type d'information :
+        <ul>
+            <li>
+                <p>
+                    stdin lecture qui va demander de remplir qlq chose a l'utilisateur
+                </p>
+            </li>
+            <li>
+                <p>
+                    stdout affiche dans la console une réponse de type standard
+                </p>
+            </li>
+            <li>
+                <p>
+                    stderr affiche dans la console une reponse de type erreur
+                </p>
+            </li>
+        </ul>
+
+        </p>
+
+        <h2>Communication</h2>
+
+        <p>
+            Une ip est une adresse sur internet, il en exite 2 version ip: ipv4 et ipv6 <br>
+            Lors de de communication entre machine il y a 2 ip qui utiliser : 
+            <ul>
+                <li>
+                    <p>
+                        privée: elles servent sur les réseaux locaux 
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        publique: elles servent a intéragir avec internet 
+                    </p>
+                </li>
+            </ul>
+            Un protocole est une maniere d'envoyer un type donnée :
+            <ul>
+                <li>
+                    <p>
+                        http/https (HyperText Transfer Protocol): protocole utiliser pour transmettre une page web, HTTPS est chiffré avec le protocole SSL
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        ftp/sftp (File Transfert Protocol): protocole utiliser pour transmettre des fichier, SFTP est chiffré grace au secure Shell
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        ssh (Secure SHell): protocole utiliser pour se connecter au terminal d'une autre machine
+                    </p>
+                </li>
+            </ul>
+            <span class="terminal"> <span class="colorBlue">[user]</span>@<span class="colorGreen">[hostname]</span> </span> : <span class="colorBlue">[user]</span> -> utilisateur de la machine du serveur<br> 
+            <span class="colorGreen">[hostname]</span> -> IP du serveur auquel on souhait se connecter <br>
+            Pour utiliser le protocole SSH il est nécessaire qu'il soit installer <span class="terminal">apt-get install openssh-server</span>
+        </p>
+
+        <h2>apache</h2>
+
+        <p>
+            apache est un application qui permet a un systeme linux d'heberger un site web. 
+        </p>
+
+        <h2>script bash</h2>
+
+        <p>
+            un script bash est un fichier ou on ecrit un ensemble de commande dans un fichier et lors de son appel cela exécute les commande <br>
+
+            <span class="terminal">sh <span class="colorGreen">[file]</span></span> lance un fichier script bash
+        </p>
+
+        <p class="extra">
+            extra: se renseigner sur le fonctionnement des extention. Elle n'ont pas de valeur pour un ordinateur elles
+            sont utile pour windows pour savoir quelle application créer <br>
+            Lors de l'ecriture de chaine de caractère avec des espace il faut mettre le nom du dossier/fichier en
+            guillement (''). <br>
+            Lors de son utilisation, comprendre pourquoi le sudo est nécessaire. <br>
+            se renseigner sur le ftp et le ssh
+        </p>
+
+    </main>
+
+    <script src="./asset/script.js"></script>
+
+</body>
+
+</html>

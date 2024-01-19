@@ -1,0 +1,32 @@
+.ContainerSection {
+    padding: 0 25%;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 40px 0;
+    padding: 15px;
+
+    border-radius: 10px;
+    box-shadow: 0 0 5px black;
+
+    cursor: pointer;
+    
+    transition: ease-in-out 0.3s;
+}
+
+.section:hover {
+    transform: scale(1.1);
+}
+
+.section:active {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.textContainer {
+    width: 75%;
+}

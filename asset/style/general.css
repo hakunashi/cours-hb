@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: inherit; 
+    cursor: pointer; 
+  }
+
+main,
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgContainer {
+    width: 150px;
+}
+
+.imgContainer img {
+    width: 100%;
+}

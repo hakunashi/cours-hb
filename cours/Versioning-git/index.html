@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./asset/img/git.png">
+    <link rel="stylesheet" href="./asset/style.css">
+    <title>Versioning</title>
+</head>
+
+<body>
+
+    <header id="site-header" class="visible">
+        <ul>
+            <li>
+                <p>
+                    <a href="#def">Gestion de projet</a>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="#git_gitlab">Git et Gitlab</a>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="#cmd">Les base de git</a>
+                </p>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+
+        <h1>Versioning</h1>
+
+        <h2 id="def">Gestion de projet</h2>
+
+        <p>
+            La gestion de version est la pratique consitant a suivre et a gérer les changements apporté au code d'un logiciel (projet) elle permet de revenir a des version antérieur du projet, de travailler a plusieur et séquence un projet
+        </p>
+
+        <h2 id="git_gitlab">Git et Gitlab</h2>
+
+        <p>
+
+            Git est un logiciel de versioning décentralisé il est libre et gratuit. Créé en 2005 par Linus Torvalds,
+            auteur du noyau Linux. Il a pour avantage d'être libre de droit, compatible avec les protocole HTTP/FTP/SSH, est performant et populaire<br>
+            Pour utiliser git, il faut l'installer sur sa machine, ensuite configurer l'utilisateur:
+            <ul>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">config --global</span> <span class="colorGreen">user.name</span> <span class="colorBlue">[Nom utilisateur]</span> </span> 
+                        configure le nom de l'utilisateur
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">config --global</span> <span class="colorGreen">user.email</span> <span class="colorBlue">[email utilisateur]</span> </span> 
+                        configure l'email de l'utilisateur
+                    </p>
+                </li>
+            </ul>
+             <br>
+            <span class="extra">Pour verifier si l'utilisateur a bien été configurer, il faut entrer <span class="terminal">git <span class="colorYellow">config</span> <span class="colorGreen">user.[arg]</span></span></span> <br>
+            <br>
+            Dans ce cours nous utiliserons Gitlab (il existe aussi Github). Ils sont des plateforme de gestion de developpement de logiciel basée sur git. Se sont des outils de gestion de code source et de collaboration permettant aux developpeur de travailler ensemble sur des projets logiciel. Il possede egelement une interface web, un systeme d'hebergement de code, un systeme de pull. <br>
+
+            Pour permettre la communication entre notre pc et Gitla, nous allons utiliser le protocole SSH. <br> 
+            Pour cela, il faut créer un couple de clés publique/privée avec la commande <span class="terminal">ssh-keygen -t rsa -b 2048 -C <span class="colorBlue">[email utilisateur]</span></span> (laisser les parametre par défaut). <br>
+            Ensuite, une fois la pair de clé SSH créer, il faut l'entrer dans Gitlab, c'est le fichier <span class="terminal">~/.ssh/id_rsa.pub</span>.
+
+            <div class="imgEx">
+                <img src="./asset/img/gitlabkey.png" alt="">
+            </div>
+
+        </p>
+
+        <h2 id="cmd">Les base de git</h2>
+
+        <h3>respository</h3>
+
+        <p>
+           
+            Ceci est l'idée genéral du fonctionnement de git
+
+            <div class="imgEx">
+                <img src="./asset/img/pricipe.png" alt="">
+            </div>
+
+            <ul>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">init</span></span>
+                        Permet de créer un nouveau respository (c'est un espace de stockage de données versionnée et géré par git sur la machine. c'est une sorte de dossier ou Git enregistre toutes les informations concernant l'historique des modifications apporté au projet) en local.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">add</span> <span class="colorBlue">[fichier a ajouter]</span> </span>
+                        Ajoute les fichiers a l'index/staging Area (C'est un espace temporaire qui conteint les modif que vous avez décidé d'inclure dans le prochain commit. les fichiers ajouté dans l'index sont prêt a être enregistrer dans la prochaine version du projet).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">status</span></span>
+                        Permet de voir les changements depuis la derniere sauvegarde dans le respository local.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">commit</span> <span class="colorBlue">-m "Message"</span> </span>
+                        Permet d'enregistrer les modifications de l'index/staging Area dans le respository local avec un message descriptif du commit.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">push</span></span>
+                        Permet de pousser en ligne tous les commits locaux sur un respository distant. <br>
+                        <span class="extra">au préalable il faut brancher le respository local au respository distant <span class="terminal">git remote add origin [lien ssh]</span> </span>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">pull</span></span>
+                        Permet de recuperer la derniere version des fichier sur un respository distant.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">clone</span> <span class="colorBlue">[URL]</span> </span>
+                        Permet de recuperer un respository distant.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">log</span></span>
+                        Permet d'avoir une liste des commit réaliser sur un projet.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">diff</span></span>
+                        Permet de comparé les modifications entre 2 commit.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">blame</span> <span class="colorBlue">[fichier]</span> </span>
+                        Permet de voir les auteur d'un fichier.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">reset</span> <span class="colorBlue">[arg]</span> </span>
+                        Permet de revenir a un commit precedent. <span class="terminal">--hard</span> supprime les commit qui sont apres le commit que l'on souhait.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">tag</span> <span class="colorBlue">[nom d'un tag]</span> </span>
+                        Permet de créer un racourci lisible pour un humain pour s'y retrouver plus facilement
+                    </p>
+                </li>
+            </ul>
+
+        </p>
+
+        <h3>branche</h3>
+
+        <p>
+            Les branches permettent de travailler sur plusieur fonctionnalité différente sans que le travail d'un autre vous impacte et permet egalement de corriger les bug d'une ancienne fonctionnalité sans devoir intégrer les evolutions non validée.
+
+            <ul>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">branch</span> <span class="colorBlue">[nom de la branche]</span> </span>
+                        Permet de créer une nouvelle branche
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">checkout</span> <span class="colorBlue">[nom de la branche]</span> </span>
+                        Permet de se mettre sur une branche
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">merge</span> <span class="colorBlue">[nom de la branche]</span> </span>
+                        Permet de fusionner la branche avec la branche courante
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git <span class="colorYellow">checkout</span> <span class="colorBlue">--track -b</span> <span class="colorGreen">[branch] origin/[branch]</span> </span>
+                        Permet de recuperer la branche sur le repo distant
+                    </p>
+                </li>
+            </ul>
+            
+        </p>
+
+        <h2>Etapes</h2>
+
+        <h4>Initialisation</h4>
+
+        <p>
+            Dans un premier temp il faut initialiser le projet. Pour cela il y a 2 maniere :
+
+            <ol>
+
+                <li>
+
+                    <p>
+                        <span class="bold">Avec un respository/dépot local:</span>
+
+                        <ol>
+
+                            <li>
+                                <p>
+                                    créer un dossier pour le pojet et dans le projet faire
+                                    <span class="terminal">git init</span> pour créer un respository/dépot local
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Créer un respository/dépot local 
+
+                                    <div class="imgEx">
+                                        <img src="./asset/img/newproject.png" alt="">
+                                    </div>
+
+                                    <span class="extra">Remarque: il faut que votre compte gitlab soit configurer pour pourvoir communiquer avec machine (SSH), egalement il faut que le respository/depot distant soit vide donc ne permetter pas la création du README.</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span class="terminal">git remote add origin git@gitlab.com:[user]/[repo/depot git]</span> 
+                                    va synchroniser les respository/depots local et distant
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Initialiser votre projet (créer au moins 1 fichier)
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span class="terminal">git add .</span> pour ajouter les fichiers dans l'index
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span class="terminal">git commit -m "initialisation projet"</span> pour ajouter dans le respository/depot local les ajouts de l'index
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span class="terminal">git push --set-upstream origin --all</span> pour envoyer le contenu du respository/depot local dans le distant et egalement les connecter pour la premiere fois <br>
+                                    <span class="extra">Remarque: par la suite les respository/depot local et distant etant a présent connecter, le <span class="terminal"> --set-upstream origin --al</span> ne sera plus necessaire.</span>
+                                </p>
+                            </li>
+
+                        </ol>
+
+                    </p>
+
+                </li>
+
+                <li>
+
+                    <p>
+                        <span class="bold">Avec un respository/dépot distant:</span> 
+
+                        <ol>
+
+                            <li>
+                                <p>
+                                    Créer un respository/dépot local
+                                    <div class="imgEx">
+                                        <img src="./asset/img/initporjetdistant.png" alt="">
+                                    </div>
+                                    <span class="extra">Il faut que le respository/depot distant ne soit pas vide donc il faut permettre la création du README. </span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Cloner le respository/depot distant sur votre machine avec <span class="terminal">git clone [URL]</span> ceci va créer une copie du pojet en local. La synchronisation et la connection se fait egalement.
+                                </p>
+                            </li>
+
+                        </ol>
+
+                    </p>
+
+                </li>
+
+            </ol>
+
+        </p>
+
+        <h4>Entretiens</h4>
+
+        <p>
+            Lors de travail sur un projet, il est interressant de d'avoir un historique du projet. pour cela il faut regulierement sauvegarder grace a git les fonctionnalité ajouter a un projet. Pour cela:
+
+            <ol>
+                <li>
+                    <p>
+                        <span class="terminal">git pull</span> pour recuperer les possible modifications ajouter par les autre colaborateur
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git add .</span> pour ajouter a l'index les changement apporter au projet
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git commit -m "message"</span> pour ajouter l'index au respository/depot local
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="terminal">git push</span> pour ajouter respository/depot local au distant
+                    </p>
+                </li>
+            </ol>
+        </p>
+
+        <p>
+            J'ai créer un respository distant qui rassemble les cours que j'ai fait jusqu'a maintenant, Vous pouvez créer un copie avec l'url suivant <span class="terminal">git@gitlab.com:isaacrasolofo/cours-hb-pe9.git</span>. Si vous souhaitez y faire des test créer un branche a votre nom.
+        </p>
+
+    </main>
+
+    <script src="./asset/script.js"></script>
+
+</body>
+
+</html>
